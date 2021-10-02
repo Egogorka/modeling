@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "google-explicit-constructor"
 //
 // Created by meeve on 25.09.2021.
 //
@@ -10,17 +12,33 @@ struct KahanFloat {
     float compensation;
 
     KahanFloat();
-    explicit KahanFloat(float value);
+    KahanFloat(float value);
     KahanFloat(float value, float compensation);
 
     KahanFloat& operator=(const KahanFloat& other);
+    KahanFloat& operator+=(float other);
+    KahanFloat& operator*=(float other);
+
+    KahanFloat& operator+=(const KahanFloat& other);
+    KahanFloat& operator-=(const KahanFloat& other);
+
+    KahanFloat operator-() const;
 };
 
-//KahanFloat operator+(const KahanFloat& a, const KahanFloat& b);
 KahanFloat operator+(const KahanFloat& a, float b);
+KahanFloat operator+(float b, const KahanFloat& a);
+KahanFloat operator*(const KahanFloat& a, float b);
+KahanFloat operator*(float b, const KahanFloat& a);
+KahanFloat operator/(const KahanFloat& a, float b);
 
-//KahanFloat operator-(const KahanFloat& a, const KahanFloat& b);
+KahanFloat operator-(const KahanFloat& a, float b);
+KahanFloat operator-(float b, const KahanFloat& a);
+
+KahanFloat operator+(const KahanFloat& a, const KahanFloat& b);
+KahanFloat operator-(const KahanFloat& a, const KahanFloat& b);
 
 
 
 #endif //MODELING_KAHANFLOAT_H
+
+#pragma clang diagnostic pop

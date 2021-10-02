@@ -20,33 +20,34 @@ State::State(float omega)
 State::State(float phi, float ksi, float omega)
 :omega(omega), ksi(ksi), phi(phi){}
 
-State::State(float phi, float ksi, float omega, float phi_comp, float ksi_comp)
-:omega(omega), ksi(ksi), phi(phi), phi_comp(phi_comp), ksi_comp(ksi_comp){}
-
 State &State::operator=(const State &other) = default;
 
-State progress_basic(State &state, float dt) {
-    auto phi = state.phi + state.ksi*dt;
-    auto ksi = state.ksi - (state.omega)*(state.omega)*state.phi*dt;
-    return {phi, ksi, state.omega};
+//void State::progress_basic(float dt) {
+//    auto phi_ = phi + ksi*dt;
+//    auto ksi_ = ksi - omega*omega*phi*dt;
+//
+//}
+
+void State::progress_alter(float dt) {
+    auto phi_1 = phi + ksi*dt*0.5;
+    auto ksi_2 = ksi - omega*omega*phi_1*dt;
+    auto phi_2 = phi_1 + ksi*dt*0.5;
+    phi = phi_2;
+    ksi = ksi_2;
 }
 
-State progress_alter(State &state, float dt) {
-    auto phi_1 = state.phi + state.ksi*dt/2;
-    auto ksi = state.ksi - (state.omega)*(state.omega)*phi_1*dt;
-    auto phi = phi_1 + state.ksi*dt/2;
-    return {phi, ksi, state.omega};
+void State::progress_basic(float dt) {
+    auto phi_ = phi + ksi*dt;
+    auto ksi_ = ksi - omega*omega*phi*dt;
+    phi = phi_;
+    ksi = ksi_;
 }
+
 
 std::ostream &operator<<(std::ostream &out, State &state) {
-    return out << state.phi << ' ' << state.ksi;
+    return out << state.phi.value << ' ' << state.ksi.value;
 }
 
-State progress_basic_comp(State &state, float dt) {
-    auto phi_with_comp = kohan_sum(state.phi,state.phi_comp,state.ksi*dt);
-    auto ksi_with_comp = kohan_sum(state.ksi,state.ksi_comp, -(state.omega)*(state.omega)*state.phi*dt);
-    return {phi_with_comp.first, ksi_with_comp.first, state.omega, phi_with_comp.second, ksi_with_comp.second};
-}
 
 //State progress_alter_comp(State &state, float dt) {
 //    auto phi_1 = state.phi + state.ksi*dt/2;

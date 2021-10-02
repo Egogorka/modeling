@@ -6,33 +6,24 @@
 #define MODELING_STATE_H
 
 #include <iostream>
+#include "KahanFloat.h"
 
 class State {
-    float phi; float phi_comp = 0.0f;
-    float ksi; float ksi_comp = 0.0f;
+    KahanFloat phi;
+    KahanFloat ksi;
 
     float omega;
 public:
     State();
-    State(float omega);
+    explicit State(float omega);
     State(float phi, float ksi, float omega);
-    State(float phi, float ksi, float omega, float phi_comp, float ksi_comp);
     State& operator= (const State& other);
 
-    friend State progress_basic(State& state, float dt);
-    friend State progress_alter(State& state, float dt);
-    friend State progress_basic_comp(State& state, float dt);
-//    friend State progress_alter_comp(State& state, float dt);
+    void progress_basic(float dt);
+    void progress_alter(float dt);
+//    void progress_basic_comp(float dt);
 
     friend std::ostream& operator<<(std::ostream& out, State& state);
 };
-
-State progress_basic(State& state, float dt);
-State progress_alter(State& state, float dt);
-
-State progress_basic_comp(State& state, float dt);
-//State progress_alter_comp(State& state, float dt);
-
-
 
 #endif //MODELING_STATE_H

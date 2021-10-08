@@ -22,13 +22,17 @@ KahanFloat KahanFloat::operator-() const {
     return out;
 }
 
+float KahanFloat::collapse() const   {
+    return value + compensation;
+}
+
 //////////////////////////////////////////////////////////////////////
 // Between KahanFloats and floats
 //////////////////////////////////////////////////////////////////////
 
 KahanFloat& KahanFloat::operator+=(float other){
     auto temp1 = other - compensation;
-    auto out = value + other;
+    auto out = value + temp1;
     auto comp = (out - value) - temp1;
     value = out; compensation = comp;
     return *this;
@@ -65,10 +69,10 @@ KahanFloat operator-(float b, const KahanFloat& a){ return a + (-b); }
 //////////////////////////////////////////////////////////////////////
 
 KahanFloat &KahanFloat::operator+=(const KahanFloat &other) {
-    auto temp1 = other - compensation;
-    auto out = value + other;
+    auto temp1 = other.value - compensation;
+    auto out = value + temp1;
     auto comp = (out - value) - temp1;
-    value = out.value; compensation = comp.value;
+    value = out; compensation = comp;
     return *this;
 }
 

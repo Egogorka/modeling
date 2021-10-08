@@ -9,7 +9,7 @@
 int sem_1_1 () {
     std::ofstream fout2, fout3;
 
-    const int N = 4;
+    const int N = 8;
     int n = 1;
 
     // cycle for dt
@@ -30,12 +30,12 @@ int sem_1_1 () {
             state.progress_basic(t/float(n));
         }
 
-//        state = start_state;
-//        for(unsigned i=0; i<n; i++){
-//            if( i % 10 == 0)
-//                fout2 << t/float(n)*float(i) << ' ' << state << '\n';
-//            state.progress_alter(t/float(n));
-//        }
+        state = start_state;
+        for(unsigned i=0; i<n; i++){
+            if( i % 10 == 0)
+                fout2 << t/float(n)*float(i) << ' ' << state << '\n';
+            state.progress_alter(t/float(n));
+        }
 
         fout2.close();
         fout3.close();

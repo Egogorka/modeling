@@ -17,6 +17,8 @@ struct KahanFloat {
     KahanFloat(float value);
     KahanFloat(float value, float compensation);
 
+    float collapse() const;
+
     KahanFloat& operator=(const KahanFloat& other);
     KahanFloat& operator+=(float other);
     KahanFloat& operator*=(float other);

@@ -2,7 +2,7 @@
 // Created by meeve on 18.09.2021.
 //
 
-#include "state.h"
+#include "state_.h"
 
 std::pair<float, float> kohan_sum(float sum, float comp, float sum_with) {
     float temp1 = sum_with - comp;
@@ -42,7 +42,6 @@ void State::progress_basic(float dt) {
     phi = phi_;
     ksi = ksi_;
 }
-
 
 std::ostream &operator<<(std::ostream &out, State &state) {
     return out << state.phi.value << ' ' << state.ksi.value;

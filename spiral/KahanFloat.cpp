@@ -93,5 +93,5 @@ KahanFloat operator-(const KahanFloat& a, const KahanFloat& b){
 }
 
 std::ostream& operator<<(std::ostream& os, const KahanFloat& a){
-    return os << a.value << ' ' << a.compensation;
+    return os << a.value;
 }

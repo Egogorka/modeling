@@ -15,6 +15,8 @@ int sem_1_1 () {
 
     // cycle for dt
     for(unsigned j=0; j<N; ++j){
+        std::cout << "---------j=" << j << "-------" << '\n';
+
         std::string temp0("../data/basic/data"); temp0 += std::to_string(j+1); temp0 += ".csv";
         std::string temp1("../data/alter/data"); temp1 += std::to_string(j+1); temp1 += ".csv";
         std::string temp2("../data/basic_kah/data"); temp2 += std::to_string(j+1); temp2 += ".csv";
@@ -35,6 +37,7 @@ int sem_1_1 () {
                 fout0 << t/float(n)*float(i) << ' ' << state1 << '\n';
             state1.progress_basic(t/float(n));
         }
+        std::cout << "progress_basic, floats - over" << '\n';
 
         state1 = start_state1;
         for(unsigned i=0; i<n; i++){
@@ -42,6 +45,7 @@ int sem_1_1 () {
                 fout1 << t/float(n)*float(i) << ' ' << state1 << '\n';
             state1.progress_alter(t/float(n));
         }
+        std::cout << "progress_alter, floats - over" << '\n';
 
         auto state2(start_state2);
         for(unsigned i=0; i<n; i++){
@@ -49,6 +53,7 @@ int sem_1_1 () {
                 fout2 << t/float(n)*float(i) << ' ' << state2 << '\n';
             state2.progress_basic(t/float(n));
         }
+        std::cout << "progress_basic, Kahan - over" << '\n';
 
         state2 = start_state2;
         for(unsigned i=0; i<n; i++){
@@ -56,6 +61,7 @@ int sem_1_1 () {
                 fout3 << t/float(n)*float(i) << ' ' << state2 << '\n';
             state2.progress_alter(t/float(n));
         }
+        std::cout << "progress_alter, Kahan - over" << '\n';
 
         fout0.close();
         fout1.close();

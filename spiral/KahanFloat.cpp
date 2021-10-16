@@ -69,7 +69,7 @@ KahanFloat operator-(float b, const KahanFloat& a){ return a + (-b); }
 //////////////////////////////////////////////////////////////////////
 
 KahanFloat &KahanFloat::operator+=(const KahanFloat &other) {
-    auto temp1 = other.value - compensation;
+    auto temp1 = other.value - compensation - other.compensation;
     auto out = value + temp1;
     auto comp = (out - value) - temp1;
     value = out; compensation = comp;

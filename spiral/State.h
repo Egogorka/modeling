@@ -34,6 +34,17 @@ public:
         ksi = ksi_2;
     }
 
+    void progress_heun(N dt) {
+        // first - we forecast
+        auto phi_forecast = phi + ksi*dt;
+        auto ksi_forecast = ksi - omega*omega*phi*dt;
+
+        // then we better the solution
+        phi = phi + dt * (ksi + ksi_forecast) / 2;
+        ksi = ksi - dt * (phi + phi_forecast) * omega * omega / 2;
+    }
+
+
     friend std::ostream& operator<<(std::ostream& out, State& state){
         return out << state.phi << ' ' << state.ksi;
     }

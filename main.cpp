@@ -5,15 +5,10 @@
 //};
 
 //#include "spiral/KahanFloat.h"
-#include "spiral/array.h"
-#include "spiral/ODE.h"
+#include "code/Vector.h"
+#include "code/ODE.h"
 
-template<typename T, std::size_t N>
-using Vector = std::array<T,N>;
-
-template<typename T>
-using Vector2 = Vector<T, 2>;
-
+using namespace modeling;
 float omega = 1.0f;
 
 // We think that vec[0] - phi, vec[1] - ksi;

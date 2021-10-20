@@ -9,4 +9,4 @@ add_executable(modeling
         harmonic/code.cpp
         spiral/KahanFloat.h spiral/KahanFloat.cpp
         spiral/State.h
-        spiral/array.h spiral/ODE.h)
+        code/Vector.h code/ODE.h)

@@ -9,6 +9,6 @@ add_executable(modeling
         harmonic/code.cpp
         code/KahanFloat.h code/KahanFloat.cpp
         spiral/State.h
-        code/Vector.h code/ODE.h code/Writer.cpp code/Writer.h code/typedefs.h code/odes/MathPendulum.h)
+        code/Vector.h code/ODE.h code/Writer.cpp code/Writer.h code/typedefs.h code/odes/MathPendulum.h code/odes/PhysPendulum.h)
 
 include_directories(code)

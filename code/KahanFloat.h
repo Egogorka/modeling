@@ -28,6 +28,8 @@ struct KahanFloat {
     KahanFloat& operator-=(const KahanFloat& other);
 
     KahanFloat operator-() const;
+
+    operator float();
 };
 
 KahanFloat operator+(const KahanFloat& a, float b);
@@ -43,6 +45,8 @@ KahanFloat operator+(const KahanFloat& a, const KahanFloat& b);
 KahanFloat operator-(const KahanFloat& a, const KahanFloat& b);
 
 std::ostream& operator<<(std::ostream& os, const KahanFloat& a);
+
+KahanFloat::operator float() {return value;}
 
 #endif //MODELING_KAHANFLOAT_H
 

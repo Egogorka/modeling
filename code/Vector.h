@@ -7,16 +7,10 @@
 
 #include <array>
 #include <iostream>
+#include "typedefs.h"
+
 
 namespace modeling {
-
-    template<typename T, std::size_t N>
-    using Vector = std::array<T,N>;
-
-    template<typename T>
-    using Vector2 = Vector<T, 2>;
-
-    // Vector +=(Vector& a, Vector &b)
 
     template<typename T, std::size_t n>
     Vector<T, n> &operator+=(Vector<T, n> &a, const Vector<T, n> &b) {

@@ -5,27 +5,43 @@
 #ifndef MODELING_ODE_H
 #define MODELING_ODE_H
 
-template<typename vec, typename scalar>
-class ODE_Solver {
-private:
-    typedef vec (*matrix)(const vec&);
-    matrix func;
-public:
-    vec state;
+#include "typedefs.h"
 
-    ODE_Solver(vec state, matrix func): state(state), func(func) {};
+namespace modeling {
 
-    void euler(scalar dt){
-        state += func(state) * dt;
+    template<typename V>
+    V identity(const V& vec){
+        return vec;
     }
 
-    void heun(scalar dt){
-        // forecast
-        auto forecast = state + func(state) * dt;
-        // better the forecast
-        state += (func(state) + func(forecast)) / scalar(2) * dt;
-    }
-};
+    template<typename V, typename scalar>
+    class ODE_Solver {
+    private:
+        // function_ that corresponds to y' = F(t,y)
+        Operator<V> function_;
+    public:
+        V state;
+        V start_state;
 
+        ODE_Solver(V state, Operator<V> func) : state(state), start_state(state), function_(func) {};
+        ODE_Solver(V state): ODE_Solver(state, identity<V>) {};
+
+        void reset_state(){
+            state = start_state;
+        }
+
+        void euler(scalar dt) {
+            state += function_(state) * dt;
+        }
+
+        void heun(scalar dt) {
+            // forecast
+            auto forecast = state + function_(state) * dt;
+            // better the forecast
+            state += (function_(state) + function_(forecast)) / scalar(2) * dt;
+        }
+    };
+
+}
 
 #endif //MODELING_ODE_H

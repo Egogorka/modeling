@@ -4,6 +4,7 @@
 
 #include "KahanFloat.h"
 
+
 KahanFloat::KahanFloat():
 value(), compensation() {}
 

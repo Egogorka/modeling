@@ -16,6 +16,8 @@ value(value), compensation(compensation) {}
 
 KahanFloat& KahanFloat::operator=(const KahanFloat &other) = default;
 
+KahanFloat::operator float() {return value;}
+
 //////////////////////////////////////////////////////////////////////
 
 KahanFloat KahanFloat::operator-() const {

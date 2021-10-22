@@ -36,8 +36,8 @@ namespace modeling {
         return out;
     }
 
-    template<typename T, std::size_t n>
-    Vector<T, n> operator*(const Vector<T, n> &a, T b) {
+    template<typename T, std::size_t n, typename scalar>
+    Vector<T, n> operator*(const Vector<T, n> &a, scalar b) {
         Vector<T, n> out;
         for (unsigned i = 0; i < n; ++i) {
             out[i] = a[i] * b;
@@ -45,11 +45,11 @@ namespace modeling {
         return out;
     }
 
-    template<typename T, std::size_t n>
-    Vector<T, n> operator*(T b, const Vector<T, n> &a) { return a * b; }
+    template<typename T, std::size_t n, typename scalar>
+    Vector<T, n> operator*(scalar b, const Vector<T, n> &a) { return a * b; }
 
-    template<typename T, std::size_t n>
-    Vector<T, n> operator/(const Vector<T, n> &a, T b) { return a * (T(1) / b); }
+    template<typename T, std::size_t n, typename scalar>
+    Vector<T, n> operator/(const Vector<T, n> &a, scalar b) { return a * (T(1) / b); }
 
     template<typename T, std::size_t n>
     std::ostream &operator<<(std::ostream &out, Vector<T, n> arr) {

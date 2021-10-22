@@ -1,9 +1,3 @@
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "google-explicit-constructor"
-//
-// Created by meeve on 25.09.2021.
-//
-
 #ifndef MODELING_KAHANFLOAT_H
 #define MODELING_KAHANFLOAT_H
 
@@ -46,8 +40,4 @@ KahanFloat operator-(const KahanFloat& a, const KahanFloat& b);
 
 std::ostream& operator<<(std::ostream& os, const KahanFloat& a);
 
-KahanFloat::operator float() {return value;}
-
 #endif //MODELING_KAHANFLOAT_H
-
-#pragma clang diagnostic pop

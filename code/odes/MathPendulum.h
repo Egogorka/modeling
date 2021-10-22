@@ -17,7 +17,7 @@ namespace modeling {
     class MathPendulum: public ODE_Solver<Vector2<T>,float> {
     private:
         static Vector2<T> func(const Vector2<T>& vec, float omega){
-            return {vec[1],-omega*omega*vec[2]};
+            return {vec[1],-omega*omega*vec[0]};
         }
     public:
         MathPendulum(float omega, const Vector2<T>& vec):

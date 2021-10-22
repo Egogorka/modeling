@@ -7,6 +7,6 @@
 
 #include "Vector.h"
 
-int spiral(int N);
+int spiral(float time, int N);
 
 #endif //MODELING_SPIRAL_H

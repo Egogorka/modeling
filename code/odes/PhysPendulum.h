@@ -20,7 +20,7 @@ namespace modeling {
     private:
         static Vector2<T> func(const Vector2<T>& vec, float omega){
             return {vec[1],
-                    -omega*omega*float(sin(vec[0]))};
+                    -omega*omega*float(sin(float(vec[0])))};
         }
     public:
         PhysPendulum(float omega, const Vector2<T>& vec):

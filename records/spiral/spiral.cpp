@@ -10,11 +10,10 @@
 
 #include <fstream>
 
-
 using namespace modeling;
 const std::string PATH = "../records/spiral/data/";
 
-int spiral(const int N){
+int spiral(float time, int N){
 
     MathPendulum<float> ode1(1.0f, 0.0f,  10.0f);
 
@@ -25,12 +24,12 @@ int spiral(const int N){
         std::string temp;
         temp = PATH + "euler/data" + std::to_string(i+1) + ".csv";
         fout.open(temp);
-        writer1.print_euler(5.0f, i+1, i > 4 ? power(10,i-4) : 1);
+        writer1.print_euler(time, i+1, i > 4 ? power(10,i-4) : 1);
         fout.close();
 
         temp = PATH + "heun/data" + std::to_string(i+1) + ".csv";
         fout.open(temp);
-        writer1.print_heun(5.0f, i+1, i > 4 ? power(10,i-4) : 1);
+        writer1.print_heun(time, i+1, i > 4 ? power(10,i-4) : 1);
         fout.close();
     }
     std::cout << "Basic float block closed\n";
@@ -42,12 +41,12 @@ int spiral(const int N){
         std::string temp;
         temp = PATH + "euler_kah/data" + std::to_string(i+1) + ".csv";
         fout.open(temp);
-        writer2.print_euler(5.0f, i+1, i > 4 ? power(10,i-4) : 1);
+        writer2.print_euler(time, i+1, i > 4 ? power(10,i-4) : 1);
         fout.close();
 
         temp = PATH + "heun_kah/data" + std::to_string(i+1) + ".csv";
         fout.open(temp);
-        writer2.print_heun(5.0f, i+1, i > 4 ? power(10,i-4) : 1);
+        writer2.print_heun(time, i+1, i > 4 ? power(10,i-4) : 1);
         fout.close();
     }
     std::cout << "Kahan float block closed\n";

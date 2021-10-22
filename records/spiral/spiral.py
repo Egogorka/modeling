@@ -36,7 +36,7 @@ def plot_data(t, phi, ksi):
 if __name__ == '__main__':
     plt.figure(figsize=figure_size)
 
-    for N in range(1,8):
+    for N in range(1,9):
         print("making images for N =", N)
         t1, phi1, ksi1 = np.loadtxt("data/euler/data"+str(N)+".csv", unpack=True)
         t2, phi2, ksi2 = np.loadtxt("data/euler_kah/data"+str(N)+".csv", unpack=True)
@@ -46,6 +46,6 @@ if __name__ == '__main__':
         plot_data((t1, t2, t3, t4), (phi1, phi2, phi3, phi4), (ksi1, ksi2, ksi3, ksi4))
         plt.savefig("images/order"+str(N)+".png")
         plt.clf()
-    # plt.show()
+    plt.show()
 
 

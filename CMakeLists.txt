@@ -5,9 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(modeling
         main.cpp
-        spiral/code.cpp spiral/code.h
         code/KahanFloat.h code/KahanFloat.cpp
-        spiral/State.h
         code/Vector.h
         code/ODE.h
         code/Writer.h
@@ -15,6 +13,8 @@ add_executable(modeling
         code/odes/MathPendulum.h
         code/odes/PhysPendulum.h
         records/spiral/spiral.cpp
-        records/spiral/spiral.h code/utilities.cpp code/utilities.h)
+        records/spiral/spiral.h
+        code/utilities.cpp
+        code/utilities.h records/phys_pendulum/pendulum.cpp records/phys_pendulum/pendulum.h)
 
 include_directories(code)

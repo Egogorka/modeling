@@ -1,26 +1,23 @@
-#include "spiral/code.h"
-//
-//class Foo{
-//
-//};
+
 
 #include "Vector.h"
 #include "odes/MathPendulum.h"
+#include "odes/PhysPendulum.h"
+#include "Writer.h"
+
+#include "records/spiral/spiral.h"
 
 using namespace modeling;
 
+
 int main() {
-    MathPendulum<float> ode(1.0f, 10.0f,  0.0f);
+    int N = 5;
+    spiral(8);
+    std::cout << 5 % 1;
+//    PhysPendulum<float> ode(1.0f, 0.0f,  10.0f);
+//    Writer<Vector2<float>,float> writer(&ode, std::cout, std::cout);
+//
+//    writer.print_euler(1.0f,2,1);
+//    writer.print_heun(1.0f,2,1);
 
-    for(unsigned i=0; i<10; ++i){
-        std::cout << ode.state << '\n';
-        ode.euler(0.00001f);
-    }
-
-    ode.reset_state();
-    for(unsigned i=0; i<10; ++i){
-        std::cout << ode.state << '\n';
-        ode.heun(0.00001f);
-    }
 }
-

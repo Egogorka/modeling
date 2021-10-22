@@ -31,12 +31,29 @@ int pendulum(){
         writer1.print_euler(time, N, 1000);
         fout.close();
 
-        temp = PATH + "heun/data" + std::to_string(i) + ".csv";
-        fout.open(temp);
-        writer1.print_heun(time, N, 1000);
-        fout.close();
+//        temp = PATH + "heun/data" + std::to_string(i) + ".csv";
+//        fout.open(temp);
+//        writer1.print_heun(time, N, 1000);
+//        fout.close();
     }
     std::cout << "Basic float block closed\n";
+
+
+    std::cout << "Second \'eye\' block opened\n";
+    for(int i=1; i<=10; i++) {
+        ode1.start_state = Vector2f{6.28f, 0.2f*i};
+        std::string temp;
+        temp = PATH + "euler_2/data" + std::to_string(i) + ".csv";
+        fout.open(temp);
+        writer1.print_euler(time, N, 1000);
+        fout.close();
+
+//        temp = PATH + "heun/data" + std::to_string(i) + ".csv";
+//        fout.open(temp);
+//        writer1.print_heun(time, N, 1000);
+//        fout.close();
+    }
+    std::cout << "Block closed\n";
 
 //    PhysPendulum<KahanFloat> ode2(1.0f, 0.0f,  0.1f);
 //    Writer<Vector2<KahanFloat>, float> writer2(&ode2, fout, std::cout);

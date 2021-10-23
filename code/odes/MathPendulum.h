@@ -12,6 +12,17 @@ namespace modeling {
 
     using namespace std::placeholders;
 
+    template<typename T>
+    class MathPendulumFunc {
+        float omega;
+    public:
+        MathPendulumFunc(float omega): omega(omega){};
+
+        Vector2<T> operator()(const Vector2<T> vec){
+            return {vec[1], -omega*omega*vec[0]};
+        }
+    };
+
     // Kahan float or just float
     template<typename T>
     class MathPendulum: public ODE_Solver<Vector2<T>,float> {

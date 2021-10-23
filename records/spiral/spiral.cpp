@@ -15,6 +15,7 @@ const std::string PATH = "../records/spiral/data/";
 
 int spiral(float time, int N){
 
+    // OdeSolver<Vector2f,float> (Vector2f{0.0f, 10.0f}, MathPendulum(omega));
     MathPendulum<float> ode1(1.0f, 0.0f,  10.0f);
 
     std::ofstream fout;

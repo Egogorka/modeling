@@ -15,6 +15,9 @@ add_executable(modeling
         records/spiral/spiral.cpp
         records/spiral/spiral.h
         code/utilities.cpp
-        code/utilities.h records/phys_pendulum/pendulum.cpp records/phys_pendulum/pendulum.h)
+        code/utilities.h
+        records/phys_pendulum/pendulum.cpp
+        records/phys_pendulum/pendulum.h
+        )
 
 include_directories(code)

@@ -74,6 +74,4 @@ int pendulum(){
 //    }
 //    std::cout << "Kahan float block closed\n";
     return 0;
-
-    return 0;
 }

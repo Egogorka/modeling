@@ -18,6 +18,6 @@ add_executable(modeling
         code/utilities.h
         records/phys_pendulum/pendulum.cpp
         records/phys_pendulum/pendulum.h
-        )
+        code/odes/PhysPendulumFriction.h records/phys_pendulum_friction/pendulum.cpp records/phys_pendulum_friction/pendulum.h code/odes/WaveTracing.h)
 
 include_directories(code)

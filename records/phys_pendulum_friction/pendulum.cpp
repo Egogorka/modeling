@@ -16,8 +16,8 @@ using namespace modeling;
 const std::string PATH = "../records/phys_pendulum_friction/data/";
 
 int pendulum_friction() {
-    int N = 5;
-    float time = 15.0f;
+    int N = 6;
+    float time = 10.0f;
 
     PhysPendulumFriction<float> ode1(1.0f, 0.3f, 0.0f,  0.1f);
 
